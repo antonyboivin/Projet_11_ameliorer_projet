@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'purbeurreantonyboivin.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'forum.apps.ForumConfig',
     'substitution_app.apps.SubstitutionAppConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -19,8 +19,8 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('substitution_app.urls'))
-
+    path('', include('substitution_app.urls')),
+    path('', include('forum.urls')),
 ]
 
 if settings.DEBUG:
