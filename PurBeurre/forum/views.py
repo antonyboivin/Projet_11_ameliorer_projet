@@ -1,8 +1,6 @@
 from django.shortcuts import render
+from .models import Heading
 
-# Create your views here.
-from django.http import HttpResponse
-
-def index(request):
-    message = "Salut tout le monde !"
-    return HttpResponse(message)
+def forum(request):
+    headings = Heading.objects.all()
+    return render(request, 'forum/forum_home_page.html', {'headings': headings})
