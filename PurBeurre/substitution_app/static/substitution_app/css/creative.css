@@ -669,6 +669,7 @@ header.masthead p {
 .buttonLegal {
   font-size: 1.5rem;
 }
-.testcolor {
+.boardcolor {
   background-color: black;
+  color: white;
 }
