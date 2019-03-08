@@ -7,19 +7,21 @@
 <link rel="stylesheet" type="text/css" href="{% static 'forum/css/creative.css' %}" />
 {% endblock %}
 
-    {% block body %}
+{% block body %}
+
       <body>
         <div style="padding: 200px 0 200px 0" class="container">
           <ol class="breadcrumb my-4">
-              <li class="breadcrumb-item"><a href="{% url 'forum' %}">heading</a></li>
-              <li class="breadcrumb-item"><a href="{% url 'forum topics' heading.pk %}">{{ heading.name }}</a></li>
-              <li class="breadcrumb-item active">New topic</li>
+              <li class="breadcrumb-item"><a href="{% url 'forum' %}">Heading</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'forum topics' topic.heading.pk %}">{{ topic.heading.name }}</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'topic posts' topic.heading.pk topic.pk %}">{{ topic.subject }}</a></li>
+              <li class="breadcrumb-item active">Post a reply</li>
           </ol>
 
             <form method="post">
-              {% csrf_token %}
+                {% csrf_token %}
 
-              {% for field in form %}
+                {% for field in form %}
                 <div class="form-group">
                   {{ field.label_tag }}
             
@@ -49,17 +51,9 @@
               {% endfor %}             
 
                 <button type="submit" class="btn btn-success">Post</button>
+
             </form>
           </div>
       </body>
 
-    {% endblock %}
-
-    
-
-
-
-
-
-
-
+{% endblock %}

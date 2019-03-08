@@ -2,15 +2,10 @@
 {% load static %}
 
 {% block css %}
-
 <link rel="stylesheet" type="text/css" href="{% static 'forum/css/creative.css' %}" />
 {% endblock %}
 
-
-
     {% block body %}
-
-
       <body>
         <div style="padding: 200px 0 200px 0" class="container">
           <ol class="breadcrumb my-4">
@@ -26,7 +21,7 @@
               </tr>
             </thead>
             <tbody>
-                {% for heading in headings %}
+              {% for heading in headings %}
                 <tr>
                   <td>
                     <a href="{% url 'forum topics' heading.pk %}">{{ heading.name }}</a>
@@ -35,8 +30,7 @@
                   <td class="align-middle">{{ heading.get_posts_count }}</td>
                   <td class="align-middle">{{ heading.topics.count }}</td>
                   <td>
-
-                      {% with post=heading.get_last_post %}
+                    {% with post=heading.get_last_post %}
                       {% if post %}
                         <small>
                           <a href="{% url 'topic posts' heading.pk post.topic.pk %}">
@@ -49,7 +43,6 @@
                         </small>
                       {% endif %}
                     {% endwith %}
-
                   </td>
                 </tr>
               {% endfor %}
@@ -57,6 +50,4 @@
           </table>
         </div>
       </body>
-    
-
     {% endblock %}

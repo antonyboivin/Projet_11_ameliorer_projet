@@ -2,7 +2,7 @@ from django.db.models import Count
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
-from .forms import NewTopicForm
+from .forms import NewTopicForm, PostForm
 from .models import Heading, Topic, Post
 
 def forum(request):
@@ -46,4 +46,22 @@ def new_topic(request, pk):
 def topic_posts(request, pk, topic_pk):
     topic = get_object_or_404(Topic, heading__pk=pk, pk=topic_pk)
     heading = get_object_or_404(Heading, pk=pk)
+    topic.views += 1
+    topic.save()
     return render(request, 'forum/topic_posts.html', {'heading': heading,'topic': topic})
+
+def reply_topic(request, pk, topic_pk):
+    topic = get_object_or_404(Topic, heading__pk=pk, pk=topic_pk)
+    userpost = request.user.username
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.topic = topic
+            post.created_by = userpost
+            post.save()
+            return redirect('topic posts', pk=pk, topic_pk=topic_pk)
+    else:
+        form = PostForm()
+    return render(request, 'forum/reply_topic.html', {'topic': topic, 'form': form})
+    

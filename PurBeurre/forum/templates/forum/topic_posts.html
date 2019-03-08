@@ -4,26 +4,22 @@
 {% load widget_tweaks %}
 
 {% block css %}
-
 <link rel="stylesheet" type="text/css" href="{% static 'forum/css/creative.css' %}" />
 {% endblock %}
 
-
-
     {% block body %}
-
       <body>
         <div style="padding: 200px 0 200px 0" class="container">
-            <ol class="breadcrumb my-4">
-                <li class="breadcrumb-item"><a href="{% url 'forum' %}">heading</a></li>
-                <li class="breadcrumb-item"><a href="{% url 'forum topics' topic.heading.pk %}">{{ topic.heading.name }}</a></li>
-                <li class="breadcrumb-item active">{{ topic.subject }}</li>
-            </ol>
+          <ol class="breadcrumb my-4">
+              <li class="breadcrumb-item"><a href="{% url 'forum' %}">heading</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'forum topics' topic.heading.pk %}">{{ topic.heading.name }}</a></li>
+              <li class="breadcrumb-item active">{{ topic.subject }}</li>
+          </ol>
 
             {% if user.is_authenticated %}
 
             <div class="mb-4">
-                <a href="#" class="btn btn-primary" role="button">Reply</a>
+                <a href="{% url 'reply topic' topic.heading.pk topic.pk %}" class="btn btn-primary" role="button">Reply</a>
             </div> 
 
             {% else %}
