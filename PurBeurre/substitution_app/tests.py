@@ -53,7 +53,7 @@ class Userjourney(TestCase):
         self.assertTemplateUsed(response, 'substitution_app/product_select.html')
         self.assertContains(response, "nutella")
         self.assertContains(response, "3017620429484")
-        self.assertContains(response, "e")
+        self.assertContains(response, "a")
 
     def test_safe_products_display(self):
         """
@@ -73,6 +73,7 @@ class Userjourney(TestCase):
         response = self.client.get(reverse('results', kwargs={'code': '3017620429484'}))
         self.assertEqual(response.status_code, 200)
         self.assertTrue(ProductsA.objects.all().exists())
+        //ici il faut verifier que le produit est plus sain
 
     def test_product_display_page(self):
         """
