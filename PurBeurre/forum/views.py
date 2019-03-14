@@ -1,7 +1,9 @@
 from django.db.models import Count
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import UpdateView #
 from django.http import Http404
+from django.utils import timezone #
 from .forms import NewTopicForm, PostForm
 from .models import Heading, Topic, Post
 
