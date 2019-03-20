@@ -1,7 +1,7 @@
 from django.contrib import auth
 from django.urls import reverse
 from django.test import TestCase
-from .models import ProductsA, UserProducts
+from ..models import ProductsA, UserProducts
 
 
 # At first, I check that all pages of the application are functional.

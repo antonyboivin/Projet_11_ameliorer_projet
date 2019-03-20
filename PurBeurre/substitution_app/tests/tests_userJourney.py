@@ -1,8 +1,8 @@
 from django.contrib import auth
 from django.urls import reverse
 from django.test import TestCase
-from .models import ProductsA, UserProducts
-from .callapi import Callapi
+from ..models import ProductsA, UserProducts
+from ..callapi import Callapi
 
 
 
@@ -62,10 +62,10 @@ class Userjourney(TestCase):
         je m'attends à ce que l'application me propose une nouvelle page de produits sains.
         """
         database = ProductsA.objects.create(
-                code = '3017620429484',
+                code = '5642120257854',
                 url = 'https://uneurl',
-                product_name = 'Nutella',
-                nutrition_grade_fr = 'e',
+                product_name = 'Bonne pâte',
+                nutrition_grade_fr = 'a',
                 main_category = ['fr:pates-a-tartiner'],
                 main_category_fr = 'Pâtes à tartiner',
                 image_small_url = 'https://static.openfoodfacts.org/images/products/301/762/042/9484/front_fr.147.200.jpg'
@@ -73,7 +73,6 @@ class Userjourney(TestCase):
         response = self.client.get(reverse('results', kwargs={'code': '3017620429484'}))
         self.assertEqual(response.status_code, 200)
         self.assertTrue(ProductsA.objects.all().exists())
-        //ici il faut verifier que le produit est plus sain
 
     def test_product_display_page(self):
         """
