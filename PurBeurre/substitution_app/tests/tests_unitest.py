@@ -7,13 +7,12 @@ from django.http import Http404
 from ..callapi import Callapi
 
 
-class Callapi(unittest.TestCase):
+class Callapipourvoir(unittest.TestCase):
    def test_request_the_openfoodfact_api_response_url(self):
         self.query = "pytest"
-        callapi = Callapi()
-        print(Callapi())
-        assert callapi.request_the_openfoodfact_api(self.query) == "https://fr.openfoodfacts.org/cgi/search.pl?search_terms=pytest&search_simple=1&action=process&json=1&page_size=100&page=1"
-
+        apicall = Callapi()
+        response = apicall.request_the_openfoodfact_api(self.query)
+        self.assertIsInstance(response, dict)
         
         """
     def test_request_the_openfoodfact_api_response(self, query):
