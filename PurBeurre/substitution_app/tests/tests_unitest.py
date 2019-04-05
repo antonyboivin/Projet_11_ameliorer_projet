@@ -65,11 +65,3 @@ class Callapipourvoir(unittest.TestCase):
         self.apiQuery = apicall.barcode_clean_the_oppenfoodfact_api_request(self.apiQuery)
         assert 'products' in apicall.request_for_substitution_products_in_openfoodfact_api(self.apiQuery)
 
-    def test_7_clean_substitution_products_in_openfoodfact_api(self):
-        apicall = Callapi()
-        self.barcode = '3017620429484'
-        self.apiQuery = apicall.barcode_request_the_openfoodfact_api(self.barcode)
-        self.apiQuery = apicall.barcode_clean_the_oppenfoodfact_api_request(self.apiQuery)
-        self.apiQuery = apicall.request_for_substitution_products_in_openfoodfact_api(self.apiQuery)
-        print(apicall.request_for_substitution_products_in_openfoodfact_api(self.apiQuery))
-        print(apicall.clean_substitution_products_in_openfoodfact_api(self.apiQuery))
